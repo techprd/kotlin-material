@@ -1,0 +1,69 @@
+buildscript {
+    ext.kotlin_version = '1.2.31'
+    ext.html_version = "0.6.9"
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+group 'com.techprd.material'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'kotlin2js'
+apply plugin: 'maven'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-test-js:$kotlin_version"
+    compile("org.jetbrains.kotlinx:kotlinx-html-js:$html_version")
+}
+
+task jarSources(type: Jar) {
+    from sourceSets.main.allSource
+    classifier = 'source'
+}
+
+artifacts {
+    compile jarSources
+}
+
+def outDir = "${buildDir}/kotlin2js/main/"
+
+compileKotlin2Js {
+    kotlinOptions.metaInfo = true
+    kotlinOptions.outputFile = outDir + "kotlin-material.js"
+    kotlinOptions.sourceMap = true
+    kotlinOptions.main = "call"
+}
+
+task copyResources(type: Copy) {
+    from sourceSets.main.resources.srcDirs
+//    into sourceSets.main.output.resourcesDir
+    into file(buildDir.path + "/kotlin2js")
+}
+
+jar {
+
+    from outDir
+    include "**/*"
+
+    manifest {
+        attributes(
+                "Specification-Title": "Kotlin JavaScript Lib",
+                "Kotlin-JS-Module-Name": "kotlin-material"
+        )
+    }
+}
+
+jar.dependsOn(compileKotlin2Js)
