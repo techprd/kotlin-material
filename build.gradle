@@ -1,5 +1,5 @@
 buildscript {
-    ext.kotlin_version = '1.2.31'
+    ext.kotlin_version = '1.2.41'
     ext.html_version = "0.6.9"
 
     repositories {
@@ -45,6 +45,15 @@ compileKotlin2Js {
     kotlinOptions.outputFile = outDir + "kotlin-material.js"
     kotlinOptions.sourceMap = true
     kotlinOptions.main = "call"
+    kotlinOptions.moduleKind = "commonjs"
+}
+
+compileTestKotlin2Js {
+    kotlinOptions.metaInfo = true
+    kotlinOptions.outputFile = outDir + "tests.js"
+    kotlinOptions.sourceMap = true
+    kotlinOptions.main = "call"
+    kotlinOptions.moduleKind = "commonjs"
 }
 
 task copyResources(type: Copy) {
@@ -67,3 +76,9 @@ jar {
 }
 
 jar.dependsOn(compileKotlin2Js)
+
+kotlin {
+    experimental {
+        coroutines "enable"
+    }
+}
