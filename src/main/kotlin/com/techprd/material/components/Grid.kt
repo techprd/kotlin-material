@@ -7,18 +7,17 @@ import kotlinx.html.id
 import org.w3c.dom.HTMLElement
 import kotlin.browser.document
 
-class Grid(val cellWidth: Number, val repeatNumber: Int, val block: HTMLElement) : Widget() {
+class Grid(val cellWidth: Number, val cells: ArrayList<HTMLElement>) : Widget() {
 
-    val cells = arrayListOf<HTMLElement>()
     val mainElement = document.create.div("mdl-grid")
 
     override fun build(): HTMLElement {
 
-        (1..repeatNumber).forEach { index ->
+        cells.forEachIndexed() { index, cell ->
             val div = document.create.div("mdl-cell mdl-cell--$cellWidth-col") {
                 id = "index-$index"
             }
-            div.append(block.cloneNode(true))
+            div.append(cell)
             mainElement.append(div)
         }
 
