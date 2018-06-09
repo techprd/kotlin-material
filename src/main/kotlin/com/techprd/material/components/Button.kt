@@ -17,7 +17,7 @@ fun button(init: Button.() -> Unit): Button {
 }
 
 
-class Button() : Widget() {
+class Button : Widget() {
 
     var type: ButtonType = ButtonType.RAISED
     var label: String = ""
@@ -44,8 +44,6 @@ class Button() : Widget() {
             ButtonType.FLAT -> cssClasses.add("mdl-button--raised")
             ButtonType.ICON -> cssClasses.add("mdl-button--icon")
         }
-
-        println(cssClasses.toSet())
 
         return document.create.button {
             classes = cssClasses.toSet()

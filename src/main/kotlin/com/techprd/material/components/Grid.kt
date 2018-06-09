@@ -13,7 +13,7 @@ class Grid(val cellWidth: Number, val cells: ArrayList<HTMLElement>) : Widget() 
 
     override fun build(): HTMLElement {
 
-        cells.forEachIndexed() { index, cell ->
+        cells.forEachIndexed { index, cell ->
             val div = document.create.div("mdl-cell mdl-cell--$cellWidth-col") {
                 id = "index-$index"
             }
