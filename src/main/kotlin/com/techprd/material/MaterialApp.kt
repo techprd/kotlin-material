@@ -1,14 +1,14 @@
 package com.techprd.material
 
-import com.techprd.material.components.Drawer
+import com.techprd.material.components.layouts.Drawer
 import com.techprd.material.components.AppBar
+import com.techprd.material.components.layouts.footerr
 import com.techprd.material.router.Route
 import com.techprd.material.router.RouteOption
 import com.techprd.material.router.Router
-import kotlinx.html.div
+import kotlinx.html.*
 import kotlinx.html.dom.append
 import kotlinx.html.dom.create
-import kotlinx.html.id
 import org.w3c.dom.HTMLElement
 import kotlin.browser.document
 import kotlin.dom.addClass
@@ -55,7 +55,51 @@ class MaterialApp {
         return this
     }
 
+    fun addFooter(): MaterialApp {
+        rootElement.append(footerr {
+            document.create.div("mdl-mega-footer__middle-section") {
+                div("mdl-mega-footer__drop-down-section") {
+                    input(classes = "mdl-mega-footer__heading-checkbox") {
+                        type = InputType.checkBox
+                        checked = true
+                    }
+                    h1("mdl-mega-footer__heading") {
+                        +"Features"
+                    }
+                    ul("mdl-mega-footer__link-list") {
+                        li {
+                            a {
+                                href = "javascript:void(0)"
+                                +"About"
+                            }
+                        }
+                        li {
+                            a {
+                                href = "javascript:void(0)"
+                                +"Terms"
+                            }
+                        }
+                        li {
+                            a {
+                                href = "javascript:void(0)"
+                                +"Partners"
+                            }
+                        }
+                        li {
+                            a {
+                                href = "javascript:void(0)"
+                                +"Updates"
+                            }
+                        }
+                    }
+                }
+            }
+        }.build())
+        return this
+    }
+
     fun start(path: String): MaterialApp {
+
         rootElement.append {
             div("mdl-layout__content") {
                 div("page-content") {
@@ -63,7 +107,6 @@ class MaterialApp {
                 }
             }
         }
-
         val defaultRoute = router.getRoutes()[path]!!
         router.navigate(defaultRoute)
 

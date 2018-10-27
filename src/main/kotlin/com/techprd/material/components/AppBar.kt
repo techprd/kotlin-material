@@ -1,6 +1,7 @@
 package com.techprd.material.components
 
 import com.techprd.material.Widget
+import com.techprd.material.components.data.Link
 import kotlinx.html.*
 import kotlinx.html.dom.create
 import org.w3c.dom.*
@@ -16,10 +17,6 @@ class AppBar(val headerTitle: String, val links: List<Link>) : Widget() {
                 navigationView(links)
             }
         }
-    }
-
-    override fun render(parentElement: HTMLElement) {
-        parentElement.append(this.build())
     }
 }
 

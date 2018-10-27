@@ -56,10 +56,6 @@ class Button : Widget() {
             }
         }
     }
-
-    override fun render(parentElement: HTMLElement) {
-        parentElement.append(this.build())
-    }
 }
 
 enum class ButtonType {

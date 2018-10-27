@@ -5,7 +5,7 @@ import org.w3c.dom.HTMLElement
 abstract class Widget {
 
     val data: ArrayList<Any> = arrayListOf()
-    var parent: HTMLElement? = null
+    lateinit var parent: HTMLElement
     val children: ArrayList<Widget> = arrayListOf()
 
     fun append(widget: Widget): Widget {
@@ -24,5 +24,8 @@ abstract class Widget {
     }
 
     abstract fun build(): HTMLElement
-    abstract fun render(parentElement: HTMLElement)
+
+    open fun render(parentElement: HTMLElement) {
+        parentElement.append(this.build())
+    }
 }

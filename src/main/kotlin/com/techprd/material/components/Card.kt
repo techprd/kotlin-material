@@ -35,8 +35,4 @@ class Card(val titleText: String, val supportText: String, val shadowDepth: Int 
         }
 
     }
-
-    override fun render(parentElement: HTMLElement) {
-        parentElement.append(this.build())
-    }
 }

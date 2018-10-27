@@ -1,6 +1,7 @@
-package com.techprd.material.components
+package com.techprd.material.components.layouts
 
 import com.techprd.material.Widget
+import com.techprd.material.components.data.Link
 import kotlinx.html.*
 import kotlinx.html.dom.create
 import org.w3c.dom.HTMLElement
@@ -14,10 +15,6 @@ class Drawer(val drawerTitle: String, val links: List<Link>) : Widget() {
             }
             drawerNavigation(links)
         }
-    }
-
-    override fun render(parentElement: HTMLElement) {
-        parentElement.append(this.build())
     }
 }
 
@@ -41,4 +38,3 @@ fun DIV.drawerNavigation(links: List<Link>) {
     }
 }
 
-data class Link(val title: String, val href: String, val icon: String = "")
