@@ -2,6 +2,7 @@ package com.techprd.material.components.layouts
 
 import com.techprd.material.Widget
 import com.techprd.material.components.data.Link
+import com.techprd.material.theme.Theme
 import kotlinx.html.*
 import kotlinx.html.dom.create
 import org.w3c.dom.HTMLElement
@@ -9,8 +10,8 @@ import kotlin.browser.document
 
 class Drawer(val drawerTitle: String, val links: List<Link>) : Widget() {
     override fun build(): HTMLElement {
-        return document.create.div("mdl-layout__drawer") {
-            span("mdl-layout-title") {
+        return document.create.div(Theme.mdl_layout_drawer) {
+            span(Theme.mdl_layout_title) {
                 +drawerTitle
             }
             drawerNavigation(links)
@@ -20,15 +21,15 @@ class Drawer(val drawerTitle: String, val links: List<Link>) : Widget() {
 
 fun DIV.drawerNavigation(links: List<Link>) {
 
-    ul("mdl-list") {
+    ul(Theme.mdl_list) {
         links.forEach { link ->
-            li("mdl-list__item") {
-                span("mdl-list__item-primary-content") {
-                    i("material-icons mdl-list__item-icon") {
+            li(Theme.mdl_list_item) {
+                span(Theme.mdl_list_item_primary) {
+                    i(Theme.mdl_list_icon) {
                         +link.icon
                     }
                     a {
-                        classes = setOf("mdl-navigation__link")
+                        classes = setOf(Theme.mdl_nav_link)
                         href = link.href
                         +link.title
                     }

@@ -30,8 +30,8 @@ class RouterTest {
 
     @Test
     fun testNavigate() {
-        assertFails({
+        assertFails {
             router.navigate("/test", "title", null)
-        })
+        }
     }
 }
