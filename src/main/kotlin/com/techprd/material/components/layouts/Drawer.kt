@@ -17,25 +17,23 @@ class Drawer(val drawerTitle: String, val links: List<Link>) : Widget() {
             drawerNavigation(links)
         }
     }
-}
 
-fun DIV.drawerNavigation(links: List<Link>) {
-
-    ul(Theme.mdl_list) {
-        links.forEach { link ->
-            li(Theme.mdl_list_item) {
-                span(Theme.mdl_list_item_primary) {
-                    i(Theme.mdl_list_icon) {
-                        +link.icon
-                    }
-                    a {
-                        classes = setOf(Theme.mdl_nav_link)
-                        href = link.href
-                        +link.title
+    private fun DIV.drawerNavigation(links: List<Link>) {
+        ul(Theme.mdl_list) {
+            links.forEach { link ->
+                li(Theme.mdl_list_item) {
+                    span(Theme.mdl_list_item_primary) {
+                        i(Theme.mdl_list_icon) {
+                            +link.icon
+                        }
+                        a {
+                            classes = setOf(Theme.mdl_nav_link)
+                            href = link.href
+                            +link.title
+                        }
                     }
                 }
             }
         }
     }
 }
-

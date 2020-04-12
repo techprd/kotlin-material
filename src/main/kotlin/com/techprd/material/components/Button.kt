@@ -5,17 +5,10 @@ import kotlinx.html.classes
 import kotlinx.html.dom.create
 import kotlinx.html.i
 import kotlinx.html.js.button
-import kotlinx.html.label
+import kotlinx.html.js.onClickFunction
 import org.w3c.dom.HTMLElement
+import org.w3c.dom.events.Event
 import kotlin.browser.document
-
-
-fun button(init: Button.() -> Unit): Button {
-    val button = Button()
-    button.init()
-    return button
-}
-
 
 class Button : Widget() {
 
@@ -24,7 +17,8 @@ class Button : Widget() {
     var icon: String = ""
     var isColored: Boolean = false
     var hasRipple: Boolean = false
-    var isEnabled: Boolean = false
+    var disabled: Boolean = false
+    var onClickFun: (Event) -> Unit = {}
 
     override fun build(): HTMLElement {
 
@@ -41,12 +35,14 @@ class Button : Widget() {
             ButtonType.FAB -> cssClasses.add("mdl-button--fab")
             ButtonType.RAISED -> cssClasses.add("mdl-button--raised")
             ButtonType.MINI_FAB -> cssClasses.add("mdl-button--fab mdl-button--mini-fab")
-            ButtonType.FLAT -> cssClasses.add("mdl-button--raised")
+            ButtonType.FLAT -> Unit
             ButtonType.ICON -> cssClasses.add("mdl-button--icon")
         }
 
         return document.create.button {
+            disabled = this@Button.disabled
             classes = cssClasses.toSet()
+            onClickFunction = this@Button.onClickFun
             if (!this@Button.icon.isBlank()) {
                 i("material-icons") {
                     +icon
@@ -56,6 +52,12 @@ class Button : Widget() {
             }
         }
     }
+}
+
+fun button(init: Button.() -> Unit): Button {
+    val button = Button()
+    button.init()
+    return button
 }
 
 enum class ButtonType {

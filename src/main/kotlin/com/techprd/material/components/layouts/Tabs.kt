@@ -13,7 +13,7 @@ import kotlin.dom.clear
 
 class Tabs(val tabs: List<Tab>) : Widget() {
 
-    val wrapper = document.create.div()
+    private val wrapper = document.create.div()
 
     override fun build(): HTMLElement {
 
@@ -54,12 +54,11 @@ class Tabs(val tabs: List<Tab>) : Widget() {
     }
 
     fun DIV.tabHeader(tab: Tab) {
-        val htmlTab = a("javascript:void(0)", "", "mdl-tabs__tab") {
+        return a("javascript:void(0)", "", "mdl-tabs__tab") {
             if (tab.isActive) classes += "is-active"
             +tab.title
             onClickFunction = selectTab(tab)
         }
-        return htmlTab
     }
 }
 
