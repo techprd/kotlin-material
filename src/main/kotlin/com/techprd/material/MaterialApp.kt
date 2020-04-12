@@ -6,6 +6,7 @@ import com.techprd.material.components.layouts.footerr
 import com.techprd.material.router.Route
 import com.techprd.material.router.RouteOption
 import com.techprd.material.router.Router
+import com.techprd.material.theme.Theme
 import kotlinx.html.*
 import kotlinx.html.dom.append
 import kotlinx.html.dom.create
@@ -21,7 +22,7 @@ class MaterialApp {
     init {
         println("Initializing Kotlin Material App")
 
-        rootElement = document.create.div("mdl-layout mdl-js-layout") {
+        rootElement = document.create.div(Theme.mdl_layout) {
             id = "root"
         }
         document.body!!.append(rootElement)
@@ -41,7 +42,7 @@ class MaterialApp {
 
     fun addDrawer(drawer: Drawer, isFixedDrawer: Boolean): MaterialApp {
         if (isFixedDrawer) {
-            rootElement.addClass("mdl-layout--fixed-drawer")
+            rootElement.addClass(Theme.mdl_fix_drawer)
         }
         drawer.render(rootElement)
         return this
@@ -49,7 +50,7 @@ class MaterialApp {
 
     fun addAppBar(appBar: AppBar, isFixedHeader: Boolean): MaterialApp {
         if (isFixedHeader) {
-            rootElement.addClass("mdl-layout--fixed-appBar")
+            rootElement.addClass(Theme.mdl_fix_app_bar)
         }
         appBar.render(rootElement)
         return this
@@ -101,8 +102,8 @@ class MaterialApp {
     fun start(path: String): MaterialApp {
 
         rootElement.append {
-            div("mdl-layout__content") {
-                div("page-content") {
+            div(Theme.mdl_layout_content) {
+                div(Theme.mdl_page_content) {
                     id = "main"
                 }
             }

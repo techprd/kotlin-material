@@ -1,6 +1,6 @@
 buildscript {
-    ext.kotlin_version = '1.2.71'
-    ext.html_version = "0.6.11"
+    ext.kotlin_version = '1.3.71'
+    ext.html_version = "0.7.1"
 
     repositories {
         mavenLocal()
@@ -12,7 +12,7 @@ buildscript {
 }
 
 group 'com.techprd.material'
-version '1.2.71'
+version '1.3.71'
 
 apply plugin: 'kotlin2js'
 apply plugin: 'maven'
@@ -32,7 +32,7 @@ dependencies {
 
 task jarSources(type: Jar) {
     from sourceSets.main.allSource
-    classifier = 'source'
+    archiveClassifier = "source"
 }
 
 artifacts {
@@ -49,13 +49,13 @@ compileKotlin2Js {
     kotlinOptions.moduleKind = "commonjs"
 }
 
-compileTestKotlin2Js {
-    kotlinOptions.metaInfo = true
-    kotlinOptions.outputFile = outDir + "tests.js"
-    kotlinOptions.sourceMap = true
-    kotlinOptions.main = "call"
-    kotlinOptions.moduleKind = "commonjs"
-}
+//compileTestKotlin2Js {
+//    kotlinOptions.metaInfo = true
+//    kotlinOptions.outputFile = outDir + "tests.js"
+//    kotlinOptions.sourceMap = true
+//    kotlinOptions.main = "call"
+//    kotlinOptions.moduleKind = "commonjs"
+//}
 
 task copyResources(type: Copy) {
     from sourceSets.main.resources.srcDirs
@@ -77,12 +77,6 @@ jar {
 }
 
 jar.dependsOn(compileKotlin2Js)
-
-kotlin {
-    experimental {
-        coroutines "enable"
-    }
-}
 
 publishing {
     publications {
