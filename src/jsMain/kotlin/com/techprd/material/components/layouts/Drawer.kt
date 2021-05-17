@@ -6,7 +6,7 @@ import com.techprd.material.theme.Theme
 import kotlinx.html.*
 import kotlinx.html.dom.create
 import org.w3c.dom.HTMLElement
-import kotlin.browser.document
+import kotlinx.browser.document
 
 class Drawer(val drawerTitle: String, val links: List<Link>) : Widget() {
     override fun build(): HTMLElement {

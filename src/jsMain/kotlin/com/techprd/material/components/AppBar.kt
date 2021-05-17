@@ -5,7 +5,7 @@ import com.techprd.material.components.data.Link
 import kotlinx.html.*
 import kotlinx.html.dom.create
 import org.w3c.dom.*
-import kotlin.browser.document
+import kotlinx.browser.document
 
 class AppBar(val headerTitle: String, val links: List<Link>) : Widget() {
 

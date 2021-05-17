@@ -1,8 +1,8 @@
 package com.techprd.material.components
 
 import com.techprd.material.Widget
+import kotlinx.dom.clear
 import org.w3c.dom.HTMLElement
-import kotlin.dom.clear
 
 abstract class Page : Widget() {
 

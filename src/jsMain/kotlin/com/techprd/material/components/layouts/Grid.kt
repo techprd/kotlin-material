@@ -7,7 +7,7 @@ import kotlinx.html.dom.create
 import kotlinx.html.stream.createHTML
 import org.w3c.dom.CloseEventInit
 import org.w3c.dom.HTMLElement
-import kotlin.browser.document
+import kotlinx.browser.document
 
 @HtmlTagMarker
 class Grid(val cellWidth: Number, val cells: ArrayList<HTMLElement>) : Widget() {

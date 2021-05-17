@@ -8,8 +8,8 @@ import kotlinx.html.js.div
 import kotlinx.html.js.onClickFunction
 import org.w3c.dom.HTMLElement
 import org.w3c.dom.events.Event
-import kotlin.browser.document
-import kotlin.dom.clear
+import kotlinx.browser.document
+import kotlinx.dom.clear
 
 class Tabs(val tabs: List<Tab>) : Widget() {
 

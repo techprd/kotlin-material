@@ -8,7 +8,7 @@ import kotlinx.html.js.button
 import kotlinx.html.js.onClickFunction
 import org.w3c.dom.HTMLElement
 import org.w3c.dom.events.Event
-import kotlin.browser.document
+import kotlinx.browser.document
 
 class Button : Widget() {
 

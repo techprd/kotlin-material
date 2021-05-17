@@ -7,12 +7,12 @@ import com.techprd.material.router.Route
 import com.techprd.material.router.RouteOption
 import com.techprd.material.router.Router
 import com.techprd.material.theme.Theme
+import kotlinx.browser.document
+import kotlinx.dom.addClass
 import kotlinx.html.*
 import kotlinx.html.dom.append
 import kotlinx.html.dom.create
 import org.w3c.dom.HTMLElement
-import kotlin.browser.document
-import kotlin.dom.addClass
 
 class MaterialApp {
 
