@@ -13,11 +13,12 @@ repositories {
 }
 
 kotlin {
-    js(IR) {
+    js(LEGACY) {
         binaries.executable()
         browser {
             commonWebpackConfig {
                 cssSupport.enabled = true
+                devtool = "source-map"
             }
         }
     }
@@ -25,6 +26,7 @@ kotlin {
     sourceSets {
         val jsMain by getting {
             dependencies {
+                implementation(kotlin("stdlib-js"))
                 implementation("org.jetbrains.kotlinx:kotlinx-html:0.7.2")
             }
         }
