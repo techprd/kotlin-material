@@ -4,7 +4,7 @@ import com.techprd.material.Widget
 import kotlinx.html.*
 import kotlinx.html.dom.create
 import org.w3c.dom.HTMLElement
-import kotlin.browser.document
+import kotlinx.browser.document
 
 class Chip : Widget() {
 

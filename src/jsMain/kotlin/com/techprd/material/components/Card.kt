@@ -5,8 +5,7 @@ import kotlinx.html.*
 import kotlinx.html.dom.create
 import kotlinx.html.js.div
 import org.w3c.dom.*
-import org.w3c.dom.events.MouseEvent
-import kotlin.browser.document
+import kotlinx.browser.document
 
 class Card(val titleText: String, val supportText: String, val shadowDepth: Int = 2) : Widget() {
 

@@ -2,7 +2,7 @@ package com.techprd.material.router
 
 import com.techprd.material.components.Page
 import org.w3c.dom.HTMLElement
-import kotlin.browser.document
+import kotlinx.browser.document
 
 class Route(val path: String, val page: Page, var data: Any?) {
     fun goTo() {

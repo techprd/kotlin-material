@@ -8,7 +8,7 @@ import kotlinx.html.js.dialog
 import kotlinx.html.js.onClickFunction
 import org.w3c.dom.HTMLDialogElement
 import org.w3c.dom.HTMLElement
-import kotlin.browser.document
+import kotlinx.browser.document
 
 class Dialog : Widget() {
     var titleText = ""

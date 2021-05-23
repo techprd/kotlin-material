@@ -1,6 +1,6 @@
 package com.techprd.material.router
 
-import kotlin.browser.window
+import kotlinx.browser.window
 
 open class Router {
 
