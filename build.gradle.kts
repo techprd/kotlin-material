@@ -1,10 +1,10 @@
 plugins {
-    kotlin("multiplatform") version "1.5.0"
+    kotlin("multiplatform") version "1.4.31"
     `maven-publish`
 }
 
 group = "com.techprd.material"
-version = "1.5.0"
+version = "1.4.31"
 
 repositories {
     mavenCentral()
@@ -14,13 +14,14 @@ repositories {
 
 kotlin {
     js(LEGACY) {
-        binaries.executable()
+        useCommonJs()
         browser {
-            commonWebpackConfig {
+            webpackTask {
                 cssSupport.enabled = true
                 devtool = "source-map"
             }
         }
+        binaries.executable()
     }
 
     sourceSets {
@@ -36,4 +37,5 @@ kotlin {
             }
         }
     }
+
 }
